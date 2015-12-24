@@ -55,12 +55,21 @@ public class TabActivity extends FragmentActivity implements OnClickListener{
 	}
 	private Fragment preFragment;
 
+	/**
+	 * @param fragmentName Fragment的完整类名
+	 * @param tag Tag名称（添加的时候带上，可以根据tag找到添加的fragment）
+	 * @param data 切换fragment需要携带的数据
+	 */
 	private void changeFragment(String fragmentName,String tag,Bundle data) {
 		 FragmentManager fragmentManager = getSupportFragmentManager();
+		 //根据tag找到对应的Fragment
 		 Fragment currentFragment = fragmentManager.findFragmentByTag(tag);
+		 //如果选中的就是现在显示的，直接返回（如果需求不同则去掉本行）
 		 if (currentFragment != null && currentFragment == preFragment) return;
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		if (currentFragment == null) {
+			
+			//参数对应到函数的注释上面,这样写的好处是，如果fragment被回收，在fragment被重新创建的时候会携带之前传递的数据
 			currentFragment = Fragment.instantiate(this, fragmentName, data);
 			transaction.add(R.id.fragment_content, currentFragment, tag);
 			if (preFragment != null) {

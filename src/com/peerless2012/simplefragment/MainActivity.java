@@ -19,9 +19,11 @@ public class MainActivity extends Activity  implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.back_stack_mode:
+			//以后退栈的方式展示Fragment
 			BackStackActivity.launch(this);
 			break;
 		case R.id.tab_mode:
+			//以Tab的方式展示Fragment
 			TabActivity.launch(this);
 			break;
 
