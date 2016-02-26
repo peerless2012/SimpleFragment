@@ -1,8 +1,10 @@
 package com.peerless2012.simplefragment;
 
+import com.peerless2012.simplefragment.fragments.BaseFragment;
 import com.peerless2012.simplefragment.fragments.TabFragment1;
 import com.peerless2012.simplefragment.fragments.TabFragment2;
 import com.peerless2012.simplefragment.fragments.TabFragment3;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -81,5 +83,12 @@ public class TabActivity extends FragmentActivity implements OnClickListener{
 		}
 		preFragment = currentFragment;
 		transaction.commit();
+	}
+	
+	public void updateFragmentData(String tag,Bundle data) {
+		BaseFragment fragmentByTag = (BaseFragment) getSupportFragmentManager().findFragmentByTag(tag);
+		if (fragmentByTag != null) {
+			fragmentByTag.updateData(data);
+		}
 	}
 }

@@ -31,7 +31,8 @@ public class BackFragment1 extends Fragment  implements OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//此方法介绍参照README.MD
-		rootView = inflater.inflate(R.layout.fragment_back, container, false);
+//		rootView = inflater.inflate(R.layout.fragment_back, container, false);
+		rootView = inflater.inflate(R.layout.fragment_back, null);
 		TextView content = (TextView) rootView.findViewById(R.id.content);
 		Bundle data = getArguments();
 		if (data != null) {

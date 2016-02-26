@@ -1,6 +1,7 @@
 package com.peerless2012.simplefragment.fragments;
 
 import com.peerless2012.simplefragment.R;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class TabFragment1 extends Fragment {
+public class TabFragment1 extends BaseFragment {
 
 	public final static String TAG = "TabFragment1";
 	public final static String CONTENT = "content";
@@ -40,5 +42,13 @@ public class TabFragment1 extends Fragment {
 		}
 		rootView.setBackgroundColor(Color.RED);
 		return rootView;
+	}
+
+	@Override
+	public void updateData(Bundle bundle) {
+		//更新数据
+		String string = bundle.getString("data");
+		Toast.makeText(getActivity(), "我收到从其他地方来的消息,消息内容是:\n"+string,
+				Toast.LENGTH_SHORT).show();
 	}
 }
