@@ -12,18 +12,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class TabActivity extends FragmentActivity implements OnClickListener{
+public class TabActivity extends FragmentActivity implements OnCheckedChangeListener{
 
+	private RadioGroup mRadioGroup;
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_tab);
-		findViewById(R.id.tab_1).setOnClickListener(this);
-		findViewById(R.id.tab_2).setOnClickListener(this);
-		findViewById(R.id.tab_3).setOnClickListener(this);
+		mRadioGroup = (RadioGroup) findViewById(R.id.tab);
+		mRadioGroup.setOnCheckedChangeListener(this);
+		((RadioButton) findViewById(R.id.tab_1)).setChecked(true);;
 	}
 	
 	public static void launch(Context context) {
@@ -31,30 +37,6 @@ public class TabActivity extends FragmentActivity implements OnClickListener{
 		context.startActivity(intent);
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.tab_1:
-			Bundle bundle1 = new Bundle();
-			bundle1.putString(TabFragment1.CONTENT, "这是传递给第一个TabFragment的数据");
-			changeFragment(TabFragment1.class.getName(),TabFragment1.TAG, bundle1);
-			break;
-		case R.id.tab_2:
-			Bundle bundle2 = new Bundle();
-			bundle2.putString(TabFragment1.CONTENT, "这是传递给第二个TabFragment的数据");
-			changeFragment(TabFragment2.class.getName(),TabFragment2.TAG, bundle2);
-			break;
-		case R.id.tab_3:
-			Bundle bundle3 = new Bundle();
-			bundle3.putString(TabFragment1.CONTENT, "这是传递给第三个TabFragment的数据");
-			changeFragment(TabFragment3.class.getName(),TabFragment3.TAG, bundle3);
-			break;
-
-		default:
-			break;
-		}
-		
-	}
 	private Fragment preFragment;
 
 	/**
@@ -85,10 +67,41 @@ public class TabActivity extends FragmentActivity implements OnClickListener{
 		transaction.commit();
 	}
 	
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+	}
+	
 	public void updateFragmentData(String tag,Bundle data) {
 		BaseFragment fragmentByTag = (BaseFragment) getSupportFragmentManager().findFragmentByTag(tag);
 		if (fragmentByTag != null) {
 			fragmentByTag.updateData(data);
 		}
+	}
+
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+			Log.i("TabActivity", "onCheckedChanged : " + checkedId);
+			switch (checkedId) {
+			case R.id.tab_1:
+				Bundle bundle1 = new Bundle();
+				bundle1.putString(TabFragment1.CONTENT, "这是传递给第一个TabFragment的数据");
+				changeFragment(TabFragment1.class.getName(),TabFragment1.TAG, bundle1);
+				break;
+			case R.id.tab_2:
+				Bundle bundle2 = new Bundle();
+				bundle2.putString(TabFragment1.CONTENT, "这是传递给第二个TabFragment的数据");
+				changeFragment(TabFragment2.class.getName(),TabFragment2.TAG, bundle2);
+				break;
+			case R.id.tab_3:
+				Bundle bundle3 = new Bundle();
+				bundle3.putString(TabFragment1.CONTENT, "这是传递给第三个TabFragment的数据");
+				changeFragment(TabFragment3.class.getName(),TabFragment3.TAG, bundle3);
+				break;
+
+			default:
+				break;
+			}
 	}
 }

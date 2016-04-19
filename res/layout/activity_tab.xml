@@ -5,30 +5,34 @@
     android:orientation="horizontal"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/tab"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical" >
 
-        <Button
+        <RadioButton
             android:id="@+id/tab_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fragment1" />
+            android:text="fragment1"
+            android:textColor="@color/check_item_color" />
 
-        <Button
+        <RadioButton
             android:id="@+id/tab_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fragment2" />
+            android:text="fragment2"
+            android:textColor="@color/check_item_color" />
 
-        <Button
+        <RadioButton
             android:id="@+id/tab_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fragment3" />
-    </LinearLayout>
+            android:text="fragment3"
+            android:textColor="@color/check_item_color" />
+    </RadioGroup>
 
     <FrameLayout
         android:id="@+id/fragment_content"
