@@ -4,11 +4,11 @@ import com.peerless2012.simplefragment.fragments.BaseFragment;
 import com.peerless2012.simplefragment.fragments.TabFragment1;
 import com.peerless2012.simplefragment.fragments.TabFragment2;
 import com.peerless2012.simplefragment.fragments.TabFragment3;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
@@ -18,7 +18,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 /**
  *以RadioGroup和RadioButton的方式切换内容区域的Fragment（缺点是无法对底部做更多的效果）
  */
-public class TabByRadioGroupActivity extends FragmentActivity implements OnCheckedChangeListener{
+public class TabByRadioGroupActivity extends BaseActivity
+				implements OnCheckedChangeListener
+				,TranslateData{
 
 	private RadioGroup mRadioGroup;
 	
@@ -73,13 +75,6 @@ public class TabByRadioGroupActivity extends FragmentActivity implements OnCheck
 		super.onSaveInstanceState(outState);
 	}
 	
-	public void updateFragmentData(String tag,Bundle data) {
-		BaseFragment fragmentByTag = (BaseFragment) getSupportFragmentManager().findFragmentByTag(tag);
-		if (fragmentByTag != null) {
-			fragmentByTag.updateData(data);
-		}
-	}
-
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		
@@ -103,5 +98,13 @@ public class TabByRadioGroupActivity extends FragmentActivity implements OnCheck
 			default:
 				break;
 			}
+	}
+
+	@Override
+	public void transDataF2FByActivity(String tag, Bundle data) {
+		BaseFragment fragmentByTag = (BaseFragment) getSupportFragmentManager().findFragmentByTag(tag);
+		if (fragmentByTag != null && fragmentByTag instanceof ReceiveData) {
+			((ReceiveData)fragmentByTag).onDataReceived(data);
+		}
 	}
 }

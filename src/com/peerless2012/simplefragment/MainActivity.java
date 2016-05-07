@@ -1,11 +1,10 @@
 package com.peerless2012.simplefragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity  implements OnClickListener{
+public class MainActivity extends BaseActivity  implements OnClickListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

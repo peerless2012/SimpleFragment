@@ -13,30 +13,34 @@ import android.widget.TextView;
 public class TabFragment3 extends BaseFragment {
 	public final static String TAG = "TabFragment3";
 	public final static String CONTENT = "content";
-	private View rootView;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		//此方法介绍参照README.MD
-//		rootView = inflater.inflate(R.layout.fragment_tab, container, false);
-		rootView = inflater.inflate(R.layout.fragment_tab, null);
+	protected int getViewLayoutRes(Bundle savedInstanceState) {
+		return R.layout.fragment_tab;
+	}
+
+	@Override
+	protected void initView(View rootView, Bundle savedInstanceState) {
 		TextView content = (TextView) rootView.findViewById(R.id.content);
-		
 		rootView.setBackgroundColor(Color.BLUE);
 		Bundle data = getArguments();
 		if (data != null) {
 			content.setText(data.getString(CONTENT));
 		}
-		return rootView;
 	}
 
 	@Override
-	public void updateData(Bundle bundle) {
+	protected void initListener(Bundle savedInstanceState) {
+		
+	}
+
+	@Override
+	protected void initData(Bundle savedInstanceState) {
 		
 	}
 }
