@@ -1,7 +1,7 @@
 package com.peerless2012.simplefragment.fragments;
 
 import com.peerless2012.simplefragment.R;
-import com.peerless2012.simplefragment.TabActivity;
+import com.peerless2012.simplefragment.TabByRadioGroupActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -46,7 +46,7 @@ public class TabFragment2 extends BaseFragment implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		TabActivity tabActivity = (TabActivity) getActivity();
+		TabByRadioGroupActivity tabActivity = (TabByRadioGroupActivity) getActivity();
 		Bundle data = new Bundle();
 		data.putString("data","我是tab2的数据,我要传递给tab1");
 		//指定更新数据的Fragment 和更新的数据

@@ -4,7 +4,6 @@ import com.peerless2012.simplefragment.fragments.BaseFragment;
 import com.peerless2012.simplefragment.fragments.TabFragment1;
 import com.peerless2012.simplefragment.fragments.TabFragment2;
 import com.peerless2012.simplefragment.fragments.TabFragment3;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,28 +11,29 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class TabActivity extends FragmentActivity implements OnCheckedChangeListener{
+/**
+ *以RadioGroup和RadioButton的方式切换内容区域的Fragment（缺点是无法对底部做更多的效果）
+ */
+public class TabByRadioGroupActivity extends FragmentActivity implements OnCheckedChangeListener{
 
 	private RadioGroup mRadioGroup;
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
-		setContentView(R.layout.activity_tab);
+		setContentView(R.layout.activity_tab_radiogroup);
 		mRadioGroup = (RadioGroup) findViewById(R.id.tab);
 		mRadioGroup.setOnCheckedChangeListener(this);
+//		mRadioGroup.check(R.id.tab_1);
 		((RadioButton) findViewById(R.id.tab_1)).setChecked(true);;
 	}
 	
 	public static void launch(Context context) {
-		Intent intent = new Intent(context, TabActivity.class);
+		Intent intent = new Intent(context, TabByRadioGroupActivity.class);
 		context.startActivity(intent);
 	}
 
@@ -82,7 +82,7 @@ public class TabActivity extends FragmentActivity implements OnCheckedChangeList
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-			Log.i("TabActivity", "onCheckedChanged : " + checkedId);
+		
 			switch (checkedId) {
 			case R.id.tab_1:
 				Bundle bundle1 = new Bundle();
@@ -91,12 +91,12 @@ public class TabActivity extends FragmentActivity implements OnCheckedChangeList
 				break;
 			case R.id.tab_2:
 				Bundle bundle2 = new Bundle();
-				bundle2.putString(TabFragment1.CONTENT, "这是传递给第二个TabFragment的数据");
+				bundle2.putString(TabFragment2.CONTENT, "这是传递给第二个TabFragment的数据");
 				changeFragment(TabFragment2.class.getName(),TabFragment2.TAG, bundle2);
 				break;
 			case R.id.tab_3:
 				Bundle bundle3 = new Bundle();
-				bundle3.putString(TabFragment1.CONTENT, "这是传递给第三个TabFragment的数据");
+				bundle3.putString(TabFragment3.CONTENT, "这是传递给第三个TabFragment的数据");
 				changeFragment(TabFragment3.class.getName(),TabFragment3.TAG, bundle3);
 				break;
 

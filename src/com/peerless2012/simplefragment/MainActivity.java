@@ -11,7 +11,8 @@ public class MainActivity extends Activity  implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		findViewById(R.id.tab_mode).setOnClickListener(this);
+		findViewById(R.id.tab_by_radiogroup_mode).setOnClickListener(this);
+		findViewById(R.id.tab_by_fragment_tab_host_mode).setOnClickListener(this);
 		findViewById(R.id.back_stack_mode).setOnClickListener(this);
 	}
 
@@ -22,9 +23,14 @@ public class MainActivity extends Activity  implements OnClickListener{
 			//以后退栈的方式展示Fragment
 			BackStackActivity.launch(this);
 			break;
-		case R.id.tab_mode:
+		case R.id.tab_by_radiogroup_mode:
 			//以Tab的方式展示Fragment
-			TabActivity.launch(this);
+			TabByRadioGroupActivity.launch(this);
+			break;
+			
+		case R.id.tab_by_fragment_tab_host_mode:
+			//以Tab的方式展示Fragment
+			TabByFragmentTabHostActivity.launch(this);;
 			break;
 
 		default:

@@ -6,10 +6,15 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <Button
-        android:id="@+id/tab_mode"
+        android:id="@+id/tab_by_radiogroup_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tab模式" />
+        android:text="RadioGroup tab 模式" />
+    <Button
+        android:id="@+id/tab_by_fragment_tab_host_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FragmentTabHost模式" />
     
     <Button
         android:id="@+id/back_stack_mode"

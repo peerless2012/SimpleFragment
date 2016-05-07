@@ -2,15 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <RadioGroup
         android:id="@+id/tab"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/tab_1"
@@ -33,11 +38,5 @@
             android:text="fragment3"
             android:textColor="@color/check_item_color" />
     </RadioGroup>
-
-    <FrameLayout
-        android:id="@+id/fragment_content"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3" />
 
 </LinearLayout>

@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".BackStackActivity"/>
-        <activity android:name=".TabActivity"/>
+        <activity android:name=".TabByRadioGroupActivity"/>
+        <activity android:name=".TabByFragmentTabHostActivity"/>
     </application>
 
 </manifest>

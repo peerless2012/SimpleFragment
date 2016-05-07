@@ -5,6 +5,7 @@
     android:orientation="vertical" >
     
     <TextView 
+        android:text="测试博啊怕就怕是的你就放屁似的V频道撒vc哦是多么V阿婆； V怕就是的呢美女膨胀系数每次vps；"
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
